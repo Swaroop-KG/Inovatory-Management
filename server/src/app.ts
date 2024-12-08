@@ -28,6 +28,8 @@ app.use(
     credentials: true,
   })
 );
+console.log('Frontend URL:', process.env.FRONTEND_URL); // Debugging
+
 
 // Handle preflight requests
 app.options('*', cors());
