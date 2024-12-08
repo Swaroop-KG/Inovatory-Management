@@ -15,7 +15,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use(cors({ origin: [process.env.FRONTEND_URL ,'inovatory-management.vercel.app'] }));
+app.use(cors({ origin: [process.env.FRONTEND_URL ,'inovatory-management.vercel.app','https://inovatory-management-rrsh-9oge4vqbm-swaroops-projects-6c84d2ee.vercel.app'] }));
 
 // application routes
 app.use('/api/v1', rootRouter);
