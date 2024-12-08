@@ -19,15 +19,20 @@ console.log('Frontend URL:', process.env.FRONTEND_URL);
 
 // CORS configuration
 app.use(
-  cors({
-    origin: [
-      process.env.FRONTEND_URL || 'http://localhost:5173',
-      'https://inovatory-management.vercel.app',
-      'https://inovatory-management-rrsh-9oge4vqbm-swaroops-projects-6c84d2ee.vercel.app',
-    ],
-    credentials: true,
-  })
-);
+    cors({
+      origin: [
+        process.env.FRONTEND_URL || 'http://localhost:5173',
+        'https://inovatory-management.vercel.app',
+        'https://inovatory-management-rrsh-5lekeqjep-swaroops-projects-6c84d2ee.vercel.app',
+      ],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      credentials: true, // Allows cookies and authentication headers
+    })
+  );
+  
+  // Explicitly handle preflight requests
+ 
 console.log('Frontend URL:', process.env.FRONTEND_URL); // Debugging
 
 
