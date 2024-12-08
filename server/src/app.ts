@@ -9,19 +9,36 @@ import path from 'path';
 
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 
-
 const app: Application = express();
 
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use(cors({ origin: [process.env.FRONTEND_URL ,'inovatory-management.vercel.app','https://inovatory-management-rrsh-9oge4vqbm-swaroops-projects-6c84d2ee.vercel.app'] }));
+// Log the frontend URL for debugging
+console.log('Frontend URL:', process.env.FRONTEND_URL);
 
-// application routes
+// CORS configuration
+app.use(
+  cors({
+    origin: [
+      process.env.FRONTEND_URL || 'http://localhost:5173',
+      'https://inovatory-management.vercel.app',
+      'https://inovatory-management-rrsh-9oge4vqbm-swaroops-projects-6c84d2ee.vercel.app',
+    ],
+    credentials: true,
+  })
+);
+
+// Handle preflight requests
+app.options('*', cors());
+
+// Application routes
 app.use('/api/v1', rootRouter);
 
+// Global error handler
 app.use(globalErrorHandler);
 
+// 404 Not Found middleware
 app.use(notFound);
 
 export default app;
