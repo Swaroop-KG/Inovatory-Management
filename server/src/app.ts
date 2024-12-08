@@ -10,7 +10,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use(cors({ origin: ['http://localhost:5173', 'inovantorymanagement.vercel.app'] }));
+app.use(cors({ origin: ['http://localhost:5173', 'inovatory-management.vercel.app'] }));
 
 // application routes
 app.use('/api/v1', rootRouter);
