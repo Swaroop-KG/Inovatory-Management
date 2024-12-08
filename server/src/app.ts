@@ -22,7 +22,7 @@ app.use(
     cors({
       origin: [
         process.env.FRONTEND_URL || 'http://localhost:5173',
-        'https://inovatory-management.vercel.app',
+        'https://inovatory-management-c87c1knum-swaroops-projects-6c84d2ee.vercel.app/',
         'https://inovatory-management-rrsh-5lekeqjep-swaroops-projects-6c84d2ee.vercel.app',
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
