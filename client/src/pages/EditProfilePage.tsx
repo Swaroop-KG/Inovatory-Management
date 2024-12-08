@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { config } from '../utils/config';
-import bgout from './auth/assets/profile1.webp';
+
 
 
 const EditProfilePage = () => {
