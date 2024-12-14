@@ -1,42 +1,27 @@
-import { Server } from 'http';
 import mongoose from 'mongoose';
 import app from './app';
 import config from './config';
 
-let server: Server;
-
-
-
 async function main() {
   try {
+    // Connect to the MongoDB database
     await mongoose.connect(config.database_url as string);
+    console.log('Connected to the database.');
 
-    server = app.listen(config.port, () => {
-      console.log(`app is listening on port ${config.port}`);
-      console.log(`connected to database `)
-    });
+    // For local development, start a traditional server
+    if (process.env.NODE_ENV !== 'production') {
+      app.listen(config.port, () => {
+        console.log(`App is listening on port ${config.port}`);
+      });
+    }
   } catch (err) {
-    console.log(err);
+    console.error('Error connecting to the database:', err);
+    process.exit(1);
   }
 }
 
-
-
+// Call the main function to initialize the server
 main();
 
-process.on('unhandledRejection', (err) => {
-  console.log(`unahandledRejection is detected , shutting down ...`, err);
-  if (server) {
-    server.close(() => {
-      process.exit(1);
-    });
-  }
-  process.exit(1);
-});
-
-
-
-process.on('uncaughtException', () => {
-  console.log(`uncaughtException is detected , shutting down ...`);
-  process.exit(1);
-});
+// Export the app for serverless deployment
+export default app;
