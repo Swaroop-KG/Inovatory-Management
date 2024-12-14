@@ -34,9 +34,7 @@ process.on('unhandledRejection', (err) => {
   process.exit(1);
 });
 
-app.get('/',(req,res)=>{
-  res.send('API IS WORKING')
-})
+
 
 process.on('uncaughtException', () => {
   console.log(`uncaughtException is detected , shutting down ...`);

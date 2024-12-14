@@ -19,4 +19,8 @@ app.use(globalErrorHandler);
 
 app.use(notFound);
 
+app.get('/',(req,res)=>{
+    res.send('API IS WORKING')
+  })
+
 export default app;
