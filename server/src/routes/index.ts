@@ -17,4 +17,5 @@ rootRouter.use('/brands', brandRoutes);
 rootRouter.use('/sellers', sellerRoutes);
 rootRouter.use('/purchases', purchaseRoutes);
 
+
 export default rootRouter;
